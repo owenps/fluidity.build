@@ -1,0 +1,30 @@
+{{- $title := .Site.Title -}}
+{{- with .Title }}{{ $title = . }}{{ end -}}
+{{- $description := "" -}}
+{{- with .Description -}}
+  {{- $description = . -}}
+{{- else -}}
+  {{- if .IsPage -}}
+    {{- $description = .Summary -}}
+  {{- else -}}
+    {{- with .Site.Params.description }}{{ $description = . }}{{ end -}}
+  {{- end -}}
+{{- end -}}
+
+<!-- Primary Meta Tags -->
+<meta name="title" content="{{ $title }}" />
+{{- with $description }}
+<meta name="description" content="{{ . | plainify }}" />
+{{- end }}
+{{- with .Params.keywords }}
+<meta name="keywords" content="{{ delimit . ", " }}" />
+{{- end }}
+
+<!-- Open Graph / Facebook -->
+{{ template "_internal/opengraph.html" . }}
+
+<!-- Twitter -->
+{{ template "_internal/twitter_cards.html" . }}
+
+<!-- Microdata -->
+{{ template "_internal/schema.html" . }}

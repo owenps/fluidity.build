@@ -1,7 +1,14 @@
 +++
-title = "home"
+title = "local-first development workspace"
+linkTitle = "home"
+description = "fluidity is a local-first desktop development app for coordinating workspaces, git worktrees, terminals, diffs, browser tabs, and AI agent sessions."
 menu = "main"
 weight = 1
+keywords = ["local-first development", "desktop development app", "git worktrees", "AI agents", "workspace manager"]
+
+[sitemap]
+priority = 1.0
+changefreq = "weekly"
 +++
 
 # fluidity

@@ -8,4 +8,4 @@ This repo is the Hugo marketing site for fluidity at `fluidity.build`.
 - Deploy via GitHub Pages from `main`.
 - Product repo: `https://github.com/owenps/fluidity`.
 - Keep copy concise, honest, and release-aware; if no public release exists, say so.
-- Required pages: home, download, release notes, about.
+- Required pages: home, download, release notes.
