@@ -13,9 +13,9 @@ changefreq = "weekly"
 
 # fluidity
 
-fluidity is a local-first desktop development application for keeping more of the software workflow in one place.
+fluidity is an agent development environment (ADE) designed for keeping more of the software development workflow in one place.
 
-Modern development work often sprawls across editors, terminals, browser tabs, review tools, and AI agent sessions. fluidity aims to make that work feel coordinated, so you can move between streams of work without losing context.
+Modern development work often sprawls across editors, terminals, browser tabs, review tools, and AI agent sessions. fluidity aims to make that work feel organized and coordinated, so you can move between streams of work without losing context.
 
 For free (*coming soon*) and [open source](https://github.com/owenps/fluidity).
 
