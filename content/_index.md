@@ -1,5 +1,5 @@
 +++
-title = "local-first development workspace"
+title = "fluidity"
 linkTitle = "home"
 description = "fluidity is a local-first desktop development app for coordinating workspaces, git worktrees, terminals, diffs, browser tabs, and AI agent sessions."
 menu = "main"
