@@ -1,4 +1,12 @@
-<a href="{{ "" | relURL }}" class="title">
-  <h2><span class="t-shimmer" data-text="fluidity">fluidity</span></h2>
-</a>
-<nav>{{- partial "nav.html" . -}}</nav>
+<div class="site-header-inner">
+  <div class="site-branding">
+    <a href="{{ "" | relURL }}" class="title">
+      <h2><span class="t-shimmer" data-text="fluidity">fluidity</span></h2>
+    </a>
+    <nav>{{- partial "nav.html" . -}}</nav>
+  </div>
+  <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to light mode" aria-pressed="false">
+    <span class="theme-toggle-icon theme-toggle-icon-sun" aria-hidden="true"></span>
+    <span class="theme-toggle-icon theme-toggle-icon-moon" aria-hidden="true"></span>
+  </button>
+</div>
