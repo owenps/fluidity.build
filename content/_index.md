@@ -34,13 +34,17 @@ Because your development workflow should belong to you.
 
 fluidity was born from the simple desire to reduce context switching across multiple applications. Bring the agents, harnesses, and project tools you already use. Give them one local place to work together.
 
-## Built to Extend
+## Built to extend
 
 fluidity is designed so tools can be added without changing fluidity itself.
 
 fluidity ships with a focused core platform, first-party extensions for the basics, and a skill to help you bring in the tools that make your workflow unique.
 
-## Core Primitives
+## Fast by default
+
+Written in Rust for a small footprint and responsive local performance.
+
+## Core primitives
 
 <div class="feature-grid">
   <article class="feature-card">
