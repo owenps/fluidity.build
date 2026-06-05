@@ -11,7 +11,7 @@ priority = 0.7
 changefreq = "weekly"
 +++
 
-# release notes
+# <span class="t-typeout" data-typeout aria-label="Release Notes"><span data-typeout-text>Release Notes</span></span>
 
 No public releases yet.
 

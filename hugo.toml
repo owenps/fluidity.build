@@ -8,7 +8,7 @@ ignoreErrors = ['error-disable-taxonomy']
 
 [params]
   title = 'fluidity'
-  description = 'A local-first desktop development application for coordinating workspaces, tiles, git worktrees, and agent-assisted development.'
+  description = 'A local-first desktop workbench for building customized AI-assisted development workflows with projects, workspaces, tiles, and extensions.'
   favicon = 'favicon.svg'
   hideMadeWithLine = true
 

@@ -1,0 +1,57 @@
+<script>
+  (() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
+    const sleep = (ms) => new Promise((resolve) => window.setTimeout(resolve, ms));
+
+    const delayFor = (character) => {
+      if (character === ",") return 210 + Math.random() * 90;
+      if (character === " ") return 30 + Math.random() * 30;
+      return 45 + Math.random() * 55;
+    };
+
+    const typeText = async (text, write) => {
+      let value = "";
+
+      for (const character of [...text]) {
+        value += character;
+        write(value);
+        await sleep(delayFor(character));
+      }
+    };
+
+    document.querySelectorAll("[data-typeout]").forEach((element) => {
+      const fragments = Array.from(
+        element.querySelectorAll("[data-typeout-text], [data-typeout-prefix], [data-typeout-fluidity]")
+      );
+
+      if (!fragments.length) return;
+
+      const fragmentText = fragments.map((fragment) => fragment.textContent);
+
+      fragments.forEach((fragment) => {
+        fragment.textContent = "";
+        if (fragment.hasAttribute("data-typeout-fluidity")) {
+          fragment.setAttribute("data-text", "");
+        }
+      });
+      element.classList.add("is-typing");
+
+      (async () => {
+        await sleep(350);
+        for (const [index, fragment] of fragments.entries()) {
+          if (index > 0) await sleep(90);
+          await typeText(fragmentText[index], (value) => {
+            fragment.textContent = value;
+            if (fragment.hasAttribute("data-typeout-fluidity")) {
+              fragment.setAttribute("data-text", value);
+            }
+          });
+        }
+        await sleep(1600);
+        element.classList.remove("is-typing");
+      })();
+    });
+  })();
+</script>
