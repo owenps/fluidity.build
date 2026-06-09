@@ -1,5 +1,5 @@
 +++
-title = "fluidity releases"
+title = "release notes"
 linkTitle = "release notes"
 description = "Release notes and version history for fluidity."
 menu = "main"
