@@ -1,0 +1,69 @@
+{{ define "main" }}
+{{- $latest := partial "releases/latest.html" . -}}
+{{- if not $latest.version -}}
+  {{- errorf "No non-draft release found for download redirect" -}}
+{{- end -}}
+{{- $assets := default dict $latest.assets -}}
+{{- $universalDmg := index $assets "macUniversalDmg" -}}
+{{- $appleSiliconDmg := index $assets "macAppleSiliconDmg" -}}
+{{- $intelDmg := index $assets "macIntelDmg" -}}
+{{- $asset := default "mac" .Params.asset -}}
+{{- $target := $universalDmg -}}
+{{- if eq $asset "macAppleSiliconDmg" -}}
+  {{- with $appleSiliconDmg }}{{ $target = . }}{{ end -}}
+{{- else if eq $asset "macIntelDmg" -}}
+  {{- with $intelDmg }}{{ $target = . }}{{ end -}}
+{{- else if not $target -}}
+  {{- with $appleSiliconDmg }}{{ $target = . }}{{ end -}}
+  {{- if not $target }}{{ with $intelDmg }}{{ $target = . }}{{ end }}{{ end -}}
+{{- end -}}
+{{- if not $target -}}
+  {{- $target = $latest.githubReleaseUrl -}}
+{{- end -}}
+{{- $githubApiUrl := printf "https://api.github.com/repos/owenps/fluidity/releases/tags/%s" $latest.tag -}}
+<meta http-equiv="refresh" content="2; url={{ $target }}">
+<script>
+  (() => {
+    const fallbackUrl = {{ printf "%q" $target | safeJS }};
+    const githubApiUrl = {{ printf "%q" $githubApiUrl | safeJS }};
+    const assetKind = {{ printf "%q" $asset | safeJS }};
+    let redirected = false;
+
+    const go = (url) => {
+      if (redirected) return;
+      redirected = true;
+      window.location.replace(url || fallbackUrl);
+    };
+
+    const pickDmg = (assets) => {
+      const dmgs = assets.filter((asset) => /\.dmg$/i.test(asset.name || ""));
+      const firstMatch = (pattern) => dmgs.find((asset) => pattern.test(asset.name || ""));
+      const universal = firstMatch(/universal/i) || (dmgs.length === 1 ? dmgs[0] : undefined);
+
+      if (assetKind === "macAppleSiliconDmg") {
+        return firstMatch(/aarch64|arm64|apple[-_\s]?silicon/i) || universal;
+      }
+
+      if (assetKind === "macIntelDmg") {
+        return firstMatch(/x64|x86_64|intel/i) || universal;
+      }
+
+      return universal || dmgs[0];
+    };
+
+    window.setTimeout(() => go(fallbackUrl), 1500);
+
+    fetch(githubApiUrl, { headers: { Accept: "application/vnd.github+json" } })
+      .then((response) => (response.ok ? response.json() : undefined))
+      .then((release) => {
+        const asset = release && Array.isArray(release.assets) ? pickDmg(release.assets) : undefined;
+        go(asset && asset.browser_download_url ? asset.browser_download_url : fallbackUrl);
+      })
+      .catch(() => go(fallbackUrl));
+  })();
+</script>
+<content>
+  <h1>Redirecting…</h1>
+  <p><a href="{{ $target }}">Download fluidity v{{ $latest.version }} for macOS</a>.</p>
+</content>
+{{ end }}

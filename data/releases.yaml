@@ -1,0 +1,19 @@
+# Release data is the single source for fluidity.build release pages and download redirects.
+# Update asset URLs after GitHub Actions publishes the real Tauri bundle names.
+# TODO: add /updates/stable.json for the Tauri updater once stable signed releases are available.
+- version: "0.0.1"
+  tag: "v0.0.1"
+  channel: "preview"
+  draft: false
+  date: "2026-06-05T00:00:00Z"
+  summary: "Initial preview build."
+  notes:
+    - "Initial installable fluidity preview."
+    - "Not yet a stable release."
+  githubReleaseUrl: "https://github.com/owenps/fluidity/releases/tag/v0.0.1"
+  assets:
+    # Tauri universal macOS DMG; replace if the release workflow emits a different filename.
+    macUniversalDmg: "https://github.com/owenps/fluidity/releases/download/v0.0.1/Fluidity_0.0.1_universal.dmg"
+    # Leave empty until separate architecture-specific DMGs exist; redirects fall back to universal.
+    macAppleSiliconDmg: ""
+    macIntelDmg: ""

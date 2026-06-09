@@ -15,14 +15,14 @@ changefreq = "weekly"
 
 An extendable orchestrator for parallel AI-assisted development workflows.
 
-Free (_coming soon_) and [open source](https://github.com/owenps/fluidity).
+Free and [open source](https://github.com/owenps/fluidity). Preview builds are available for macOS.
 
 <div class="cta-row">
-  <button class="button button-disabled" type="button" disabled aria-disabled="true">
+  <a class="button button-primary" href="/download/">
     <span class="icon icon-download" aria-hidden="true"></span>
-    <span class="label">In Development</span>
-  </button>
-  <a class="button button-primary" href="https://github.com/owenps/fluidity" rel="me">
+    <span class="label">Download preview</span>
+  </a>
+  <a class="button" href="https://github.com/owenps/fluidity" rel="me">
     <span class="icon icon-star" aria-hidden="true"></span>
     <span class="label">Star on GitHub</span>
   </a>

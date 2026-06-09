@@ -1,0 +1,7 @@
+{{- $latest := dict -}}
+{{- range sort hugo.Data.releases "date" "desc" -}}
+  {{- if and (not .draft) (not $latest.version) -}}
+    {{- $latest = . -}}
+  {{- end -}}
+{{- end -}}
+{{- return $latest -}}

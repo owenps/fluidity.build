@@ -1,0 +1,12 @@
+{{- $release := partial "releases/latest.html" . -}}
+{{- if not $release.version -}}
+  {{- errorf "No non-draft release found for latest JSON" -}}
+{{- end -}}
+{{- $notesUrl := printf "releases/%s" $release.version | absURL -}}
+{
+  "version": {{ printf "%q" $release.version | safeJS }},
+  "channel": {{ printf "%q" $release.channel | safeJS }},
+  "notesUrl": {{ printf "%q" $notesUrl | safeJS }},
+  "publishedAt": {{ printf "%q" $release.date | safeJS }},
+  "githubReleaseUrl": {{ printf "%q" $release.githubReleaseUrl | safeJS }}
+}

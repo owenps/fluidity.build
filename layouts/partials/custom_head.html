@@ -565,6 +565,56 @@
     }
   }
 
+  .release-list {
+    display: grid;
+    gap: 0.9rem;
+    margin: 1.25rem 0 0;
+  }
+
+  .release-card,
+  .release-notice {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--card-shadow);
+    box-sizing: border-box;
+    padding: 1rem;
+  }
+
+  .release-card h2 {
+    font-size: 1.1rem;
+    margin: 0 0 0.4rem;
+  }
+
+  .release-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  .release-meta {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .badge {
+    border: 1px solid var(--button-muted-border);
+    color: var(--button-muted-text);
+    display: inline-block;
+    font-size: 0.78rem;
+    line-height: 1;
+    padding: 0.25rem 0.4rem;
+  }
+
+  .badge-preview {
+    border-color: var(--link-color);
+    color: var(--link-color);
+  }
+
+  .release-notice {
+    color: var(--card-text);
+    margin: 1rem 0;
+  }
+
   footer {
     border-top: 1px dashed var(--rule-color);
     color: var(--footer-color);

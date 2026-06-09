@@ -1,0 +1,13 @@
+{{ define "main" }}
+{{- $latest := partial "releases/latest.html" . -}}
+{{- if not $latest.version -}}
+  {{- errorf "No non-draft release found for latest redirect" -}}
+{{- end -}}
+{{- $target := printf "/releases/%s/" $latest.version | relURL -}}
+<meta http-equiv="refresh" content="0; url={{ $target }}">
+<script>window.location.replace({{ printf "%q" $target | safeJS }});</script>
+<content>
+  <h1>Redirecting…</h1>
+  <p><a href="{{ $target }}">Go to fluidity v{{ $latest.version }} release notes</a>.</p>
+</content>
+{{ end }}

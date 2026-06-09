@@ -1,0 +1,63 @@
+{{ define "main" }}
+{{- $version := default .File.BaseFileName .Params.version -}}
+{{- $matches := where hugo.Data.releases "version" $version -}}
+{{- if not $matches -}}
+  {{- errorf "No release data found for version %q" $version -}}
+{{- end -}}
+{{- $release := index $matches 0 -}}
+{{- $date := time.AsTime $release.date -}}
+{{- $assets := default dict $release.assets -}}
+{{- $universalDmg := index $assets "macUniversalDmg" -}}
+{{- $appleSiliconDmg := index $assets "macAppleSiliconDmg" -}}
+{{- $intelDmg := index $assets "macIntelDmg" -}}
+{{- $isPrerelease := or (eq $release.channel "preview") (hasPrefix $release.version "0.0.") -}}
+<content>
+  <p><a href="{{ "/releases/" | relURL }}">← all releases</a></p>
+
+  <h1>fluidity v{{ $release.version }}</h1>
+
+  <p class="release-meta">
+    <time datetime="{{ $date.Format "2006-01-02T15:04:05Z07:00" }}">{{ $date.Format "2 Jan 2006" }}</time>
+    <span class="badge{{ if $isPrerelease }} badge-preview{{ end }}">{{ if $isPrerelease }}preview prerelease{{ else }}stable{{ end }}</span>
+  </p>
+
+  {{- if $isPrerelease }}
+    <div class="release-notice" role="note">
+      This is a preview prerelease for early testing. It is not the stable v0.1.0 release.
+    </div>
+  {{- end }}
+
+  <p>{{ $release.summary }}</p>
+
+  <div class="cta-row" aria-label="Downloads">
+    {{- if $universalDmg }}
+      <a class="button button-primary" href="{{ $universalDmg }}">
+        <span class="icon icon-download" aria-hidden="true"></span>
+        <span class="label">Download macOS DMG</span>
+      </a>
+    {{- else }}
+      <span class="button button-disabled" aria-disabled="true">
+        <span class="icon icon-download" aria-hidden="true"></span>
+        <span class="label">macOS DMG pending</span>
+      </span>
+    {{- end }}
+
+    {{- with $appleSiliconDmg }}
+      <a class="button" href="{{ . }}">Apple silicon DMG</a>
+    {{- end }}
+
+    {{- with $intelDmg }}
+      <a class="button" href="{{ . }}">Intel DMG</a>
+    {{- end }}
+  </div>
+
+  <h2>Changelog</h2>
+  <ul>
+    {{- range $release.notes }}
+      <li>{{ . }}</li>
+    {{- end }}
+  </ul>
+
+  <p><a href="{{ $release.githubReleaseUrl }}">View this release on GitHub</a>.</p>
+</content>
+{{ end }}

@@ -1,0 +1,22 @@
+{{ define "main" }}
+<content>
+  <h1><span class="t-typeout" data-typeout aria-label="Releases"><span data-typeout-text>Releases</span></span></h1>
+
+  <p>Release notes and download links for fluidity.</p>
+
+  <div class="release-list" aria-label="fluidity releases">
+    {{- range sort hugo.Data.releases "date" "desc" }}
+      {{- $date := time.AsTime .date -}}
+      {{- $isPrerelease := or (eq .channel "preview") (hasPrefix .version "0.0.") -}}
+      <article class="release-card">
+        <h2><a href="{{ printf "/releases/%s/" .version | relURL }}">v{{ .version }}</a></h2>
+        <p class="release-meta">
+          <time datetime="{{ $date.Format "2006-01-02T15:04:05Z07:00" }}">{{ $date.Format "2 Jan 2006" }}</time>
+          <span class="badge{{ if $isPrerelease }} badge-preview{{ end }}">{{ if $isPrerelease }}preview prerelease{{ else }}stable{{ end }}</span>
+        </p>
+        <p>{{ .summary }}</p>
+      </article>
+    {{- end }}
+  </div>
+</content>
+{{ end }}
