@@ -315,7 +315,7 @@
     transition: background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
   }
 
-  .button-primary::before {
+  .button-rainbow::before {
     background: linear-gradient(
       90deg,
       rgba(255, 92, 122, 0.34) 0%,
@@ -345,14 +345,14 @@
     z-index: 0;
   }
 
-  .button-primary:hover,
-  .button-primary:focus-visible {
+  .button-rainbow:hover,
+  .button-rainbow:focus-visible {
     box-shadow: var(--button-shadow), 0 0 0 1px rgba(255, 255, 255, 0.06);
     transform: translateY(-0.04rem);
   }
 
-  .button-primary:hover::before,
-  .button-primary:focus-visible::before {
+  .button-rainbow:hover::before,
+  .button-rainbow:focus-visible::before {
     animation: button-rainbow-flow 2200ms linear infinite;
     opacity: 1;
   }
@@ -373,7 +373,7 @@
     }
 
     .button-primary,
-    .button-primary::before,
+    .button-rainbow::before,
     .feature-card,
     .feature-icon,
     .feature-icon::before {
@@ -383,8 +383,8 @@
 
     .button-primary:hover,
     .button-primary:focus-visible,
-    .button-primary:hover::before,
-    .button-primary:focus-visible::before,
+    .button-rainbow:hover::before,
+    .button-rainbow:focus-visible::before,
     .feature-card:hover,
     .feature-card:hover .feature-icon,
     .feature-card:hover .feature-icon::before {

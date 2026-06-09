@@ -18,11 +18,11 @@ An extendable orchestrator for parallel AI-assisted development workflows.
 Free and [open source](https://github.com/owenps/fluidity). Preview builds are available for macOS.
 
 <div class="cta-row">
-  <a class="button button-primary" href="/download/">
+  <a class="button" href="/download/">
     <span class="icon icon-download" aria-hidden="true"></span>
     <span class="label">Download preview</span>
   </a>
-  <a class="button" href="https://github.com/owenps/fluidity" rel="me">
+  <a class="button button-primary button-rainbow" href="https://github.com/owenps/fluidity" rel="me">
     <span class="icon icon-star" aria-hidden="true"></span>
     <span class="label">Star on GitHub</span>
   </a>

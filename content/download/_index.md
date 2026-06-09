@@ -17,7 +17,7 @@ changefreq = "weekly"
 fluidity is available as a macOS preview prerelease.
 
 <div class="cta-row">
-  <a class="button button-primary" href="/download/mac/">
+  <a class="button" href="/download/mac/">
     <span class="icon icon-download" aria-hidden="true"></span>
     <span class="label">Download for macOS</span>
   </a>
