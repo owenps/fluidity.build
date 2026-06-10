@@ -1,18 +1,35 @@
 # Release data is the single source for fluidity.build release pages and download redirects.
 # Update asset URLs after GitHub Actions publishes the real Tauri bundle names.
 # TODO: add /updates/stable.json for the Tauri updater once stable signed releases are available.
+- version: "0.0.2"
+  tag: "v0.0.2"
+  channel: "preview"
+  draft: false
+  date: "2026-06-10T02:54:56Z"
+  summary: "Preview build with a new notepad tile and review workflow polish."
+  notes:
+    - "Adds a notepad tile for lightweight notes in a workspace."
+    - "Improves diff tile scrolling and review ergonomics."
+    - "Adds settings for notepad markdown preview and tile behavior."
+  githubReleaseUrl: "https://github.com/owenps/fluidity/releases/tag/v0.0.2"
+  assets:
+    # Tauri universal macOS DMG; replace if the release workflow emits a different filename.
+    macUniversalDmg: "https://github.com/owenps/fluidity/releases/download/v0.0.2/Fluidity_0.0.2_universal.dmg"
+    # Leave empty until separate architecture-specific DMGs exist; redirects fall back to universal.
+    macAppleSiliconDmg: ""
+    macIntelDmg: ""
+
 - version: "0.0.1"
   tag: "v0.0.1"
   channel: "preview"
   draft: false
-  date: "2026-06-05T00:00:00Z"
+  date: "2026-06-10T02:17:35Z"
   summary: "Initial preview build."
   notes:
     - "Initial installable fluidity preview."
-    - "Not yet a stable release."
   githubReleaseUrl: "https://github.com/owenps/fluidity/releases/tag/v0.0.1"
   assets:
-    # Tauri universal macOS DMG; replace if the release workflow emits a different filename.
+    # Tauri universal macOS DMG.
     macUniversalDmg: "https://github.com/owenps/fluidity/releases/download/v0.0.1/Fluidity_0.0.1_universal.dmg"
     # Leave empty until separate architecture-specific DMGs exist; redirects fall back to universal.
     macAppleSiliconDmg: ""
