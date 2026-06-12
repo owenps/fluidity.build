@@ -1,0 +1,36 @@
+{{- $release := partial "releases/latest.html" . -}}
+{{- if not $release.version -}}
+  {{- errorf "No non-draft release found for stable updater manifest" -}}
+{{- end -}}
+{{- $updater := default dict $release.updater -}}
+{{- $appTarGz := index $updater "macUniversalAppTarGz" -}}
+{{- $signature := index $updater "macUniversalAppTarGzSignature" -}}
+{{- $pubDate := default $release.date (index $updater "pubDate") -}}
+{{- if or (not $appTarGz) (not $signature) -}}
+  {{- errorf "Release %s is missing updater app tarball or signature" $release.version -}}
+{{- end -}}
+{{- $notesUrl := printf "releases/%s" $release.version | absURL -}}
+{
+  "version": {{ printf "%q" $release.version | safeJS }},
+  "notes": {{ printf "%q" $release.summary | safeJS }},
+  "notesUrl": {{ printf "%q" $notesUrl | safeJS }},
+  "pub_date": {{ printf "%q" $pubDate | safeJS }},
+  "platforms": {
+    "darwin-aarch64": {
+      "signature": {{ printf "%q" $signature | safeJS }},
+      "url": {{ printf "%q" $appTarGz | safeJS }}
+    },
+    "darwin-x86_64": {
+      "signature": {{ printf "%q" $signature | safeJS }},
+      "url": {{ printf "%q" $appTarGz | safeJS }}
+    },
+    "darwin-aarch64-app": {
+      "signature": {{ printf "%q" $signature | safeJS }},
+      "url": {{ printf "%q" $appTarGz | safeJS }}
+    },
+    "darwin-x86_64-app": {
+      "signature": {{ printf "%q" $signature | safeJS }},
+      "url": {{ printf "%q" $appTarGz | safeJS }}
+    }
+  }
+}

@@ -15,6 +15,10 @@
     - "Fixes terminal viewport rendering and stable titlebar controls."
     - "Preserves unknown settings for safer upgrades."
   githubReleaseUrl: "https://github.com/owenps/fluidity/releases/tag/v0.0.4"
+  updater:
+    pubDate: "2026-06-12T16:04:09.697Z"
+    macUniversalAppTarGz: "https://github.com/owenps/fluidity/releases/download/v0.0.4/Fluidity_universal.app.tar.gz"
+    macUniversalAppTarGzSignature: "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVSQXRFVStFM0tSWXFMWXpmdnpWSGV0a3hyRmVxU1VlWkY2K2VXdDkxN1RYbjROOHJtZDJTVi9sWjhONXhRQ0JDakMraGVwM055UlhyamgwY2NYWndtRHc4djRtVk0yZ0FnPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgxMjgwMjQ0CWZpbGU6Rmx1aWRpdHkuYXBwLnRhci5negorUnkwVWNvVmtrREQxalBNTUh5N0gvUzRYUHAveUNEclFIdWM4azd2aHBWUmlGaG1uNy8wKzdrTWFsK1RvK0JPVE5qQWE5Q0JVWXVwV3NtVTZTQnFEUT09Cg=="
   assets:
     # Tauri universal macOS DMG.
     macUniversalDmg: "https://github.com/owenps/fluidity/releases/download/v0.0.4/Fluidity_0.0.4_universal.dmg"
